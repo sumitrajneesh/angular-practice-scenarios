@@ -1,0 +1,11 @@
+<div class="card">
+  <h3>Parent Component</h3>
+
+  <p><strong>Parent → Child:</strong> {{ parentMessage }}</p>
+  <app-child
+    [childMessage]="parentMessage"
+    (messageEvent)="receiveMessageFromChild($event)">
+  </app-child>
+
+  <p><strong>Child → Parent:</strong> {{ childResponse }}</p>
+</div>

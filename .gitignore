@@ -1,0 +1,51 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+
+# Angular build output
+dist/
+.tmp/
+.out-tsc/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+*.pid
+*.seed
+*.pid.lock
+
+# Compiled output
+/build
+/bin
+/target
+
+# Coverage reports
+coverage/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Large or generated assets
+**/*.zip
+**/*.rar
+**/*.tar.gz
+**/*.mp4
+**/*.avi
+**/*.exe
