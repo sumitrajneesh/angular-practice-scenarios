@@ -1,89 +1,171 @@
-I previously converted your text into the structured README.md format. Here is the complete content of that file, ready to be saved as README.md:
+# 01 - Component Communication (Angular 8 Practice)
 
-Markdown
+This mini-project demonstrates **Parent-Child component communication** in **Angular 8** using `@Input()` and `@Output()` decorators.
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML``   # 🧩 Angular 8 Component Communication: TaskBoard Demo  This mini-project, originally an **Angular 8** practice scenario, demonstrates **Parent ↔ Child component communication** using the core Angular decorators and binding mechanisms to build a simple TaskBoard.  ---  ## 🚀 Key Concepts Demonstrated  This project showcases bi-directional component communication using:  * **`@Input()`** and **Property Binding (`[ ]`)** → For **Parent (Taskboard) ➜ Child (TaskItem)** data flow.  * **`@Output()`** and **`EventEmitter`** with **Event Binding (`( )`)** → For **Child (TaskItem) ➜ Parent (Taskboard)** event/data flow.  ---  ## 🏗️ Project Setup & Commands  ### 1️⃣ Create the Angular Workspace (Initial Steps)  To recreate the original project environment:  ```bash  cd F:\angular-practice-scenarios\Phase-1-Core-Fundamentals  npx -p @angular/cli@8 ng new component-communication-demo --skip-tests --routing=false --style=css  cd component-communication-demo   ``
+---
 
-### 2️⃣ Generate Components
+## 🏗️ Project Setup
 
-The following commands would be used to generate the necessary components:
+### 1️⃣ Create the workspace with Angular 8
 
-Bash
+```bash
+cd F:\angular-practice-scenarios\Phase-1-Core-Fundamentals
+npx -p @angular/cli@8 ng new component-communication-demo --skip-tests --routing=false --style=css
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   ng generate component taskboard  ng generate component task-item   `
+```bash
+src/app/
+├── parent/
+│   ├── parent.component.ts
+│   ├── parent.component.html
+│   └── parent.component.css
+├── child/
+│   ├── child.component.ts
+│   ├── child.component.html
+│   └── child.component.css
+├── app.module.ts
+└── app.component.html
 
-### 3️⃣ Serve Application
+```bash
+cd component-communication-demo
+npx ng serve
 
-Run the application locally:
+# 🧩 Angular 8 – TaskBoard Component Communication
 
-Bash
+This mini-project demonstrates **Parent ↔ Child communication** in Angular using:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   npx ng serve --open   `
+- **@Input()** → Parent ➜ Child data flow  
+- **@Output() + EventEmitter** → Child ➜ Parent event flow  
+- **Property Binding `[ ]`** and **Event Binding `( )`**
 
-⚙️ Project Structure
---------------------
+---
 
-The key files involved in the communication demo are:
+## ⚙️ Project Structure
 
-Bash
+``` bash
+src/
+│
+├── app/
+│ ├── taskboard/
+│ │ ├── taskboard.component.ts
+│ │ ├── taskboard.component.html
+│ │ └── taskboard.component.css
+│ │
+│ ├── task-item/
+│ │ ├── task-item.component.ts
+│ │ ├── task-item.component.html
+│ │ └── task-item.component.css
+│ │
+│ ├── app.module.ts
+│ └── app.component.html
+│
+└── README.md
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   src/  ├── app/  │ ├── taskboard/              # Parent Component  │ │ ├── taskboard.component.ts  │ │ └── taskboard.component.html  │ │  │ ├── task-item/              # Child Component  │ │ ├── task-item.component.ts  │ │ └── task-item.component.html  │ │  │ ├── app.module.ts  │ └── app.component.html  │  └── README.md   `
 
-🧠 Concept Deep Dive
---------------------
 
-### 1️⃣ Parent ➜ Child Communication (@Input() + Property Binding)
+---
 
-The parent component (TaskboardComponent) **sends a single task object** to the child component (TaskItemComponent) for display.
+## 🧠 Concept Recap
 
-**Parent Template (TaskboardComponent)Child Component TypeScript (TaskItemComponent)**\`\` \`// child.component.ts\` **\`@Input() task: any;\`**
+### 1️⃣ Parent ➜ Child Communication (`@Input()` + Property Binding)
 
-> **💡 Property Binding:** \[task\]="task"
-> 
-> *   Left side (\[task\]) → Child component's property (must be decorated with @Input())
->     
-> *   Right side (task) → Parent component's variable value
->     
+The parent component (`TaskboardComponent`) **sends data** to the child component (`TaskItemComponent`) using property binding.
 
-### 2️⃣ Child ➜ Parent Communication (@Output() + EventEmitter + Event Binding)
+```html
+<!-- Parent HTML -->
+<app-task-item [task]="task"></app-task-item>
 
-The child component emits an event to notify the parent about a user action (e.g., "Complete Task").
+// child.component.ts
+@Input() task: any;
 
-**Child Component TypeScript (TaskItemComponent)Parent Template (TaskboardComponent)**// child.component.ts **@Output() taskCompleted = new EventEmitter();** completeTask() { this.taskCompleted.emit(this.task.id); }\`\`
+💡 \[task\]=“task”
 
-> **💡 Event Binding:** (taskCompleted)="markAsDone($event)"
-> 
-> *   Left side ((taskCompleted)) → Child's event (decorated with @Output())
->     
-> *   Right side (markAsDone($event)) → Parent's event handler method
->     
+Left side (\[task\]) → child component’s property (decorated with @Input)
 
-### 📜 Full TaskBoard Flow
+Right side (task) → parent’s variable value
 
-1.  TypeScripttasks = \[ { id: 1, title: 'Build Angular App', completed: false }, { id: 2, title: 'Integrate Spring Boot API', completed: false }\];
-    
-2.  HTML
-    
-3.  TypeScript// In TaskItemComponentthis.taskCompleted.emit(this.task.id);
-    
-4.  TypeScript// In TaskboardComponentmarkAsDone(id: number) { const task = this.tasks.find(t => t.id === id); if (task) task.completed = true;}
-    
+2️⃣ Child ➜ Parent Communication (@Output() + EventEmitter)
 
-🧰 Angular Binding Summary
---------------------------
+The child component emits events to inform the parent about user actions.
 
-**SyntaxTypeDirectionDescription\[property\]="value"**Property BindingParent ➜ ChildSends data to child component**(event)="handler($event)"**Event BindingChild ➜ ParentReceives an event from the child component**\[(ngModel)\]="value"**Two-way BindingBothUsed primarily in Angular Forms
+<!-- Parent HTML -->  
+<app-task-item  
+\[task\]=“task”  
+(taskCompleted)=“markAsDone($event)”>  
+</app-task-item>
+
+// child.component.ts  
+@Output() taskCompleted = new EventEmitter<number>();
+
+completeTask() {  
+this.taskCompleted.emit([this.task.id](http://this.task.id));  
+}
+
+💡 (taskCompleted)=“markAsDone($event)”
+
+Left side ((taskCompleted)) → child’s event
+
+Right side (markAsDone($event)) → parent’s event handler
+
+📜 Full Flow Explanation
+
+TaskboardComponent holds the task list:
+
+tasks = \[  
+{ id: 1, title: ‘Build Angular App’, completed: false },  
+{ id: 2, title: ‘Integrate Spring Boot API’, completed: false }  
+\];
+
+It renders a list of <app-task-item> components:
+
+<div \*ngFor=“let task of tasks”>  
+<app-task-item  
+\[task\]=“task”  
+(taskCompleted)=“markAsDone($event)”>  
+</app-task-item>  
+</div>
+
+Each TaskItemComponent receives its task via @Input().
+
+When a user clicks “Complete”, the child calls:
+
+this.taskCompleted.emit([this.task.id](http://this.task.id));
+
+The parent’s method markAsDone(id) runs:
+
+markAsDone(id: number) {  
+const task = this.tasks.find(t => [t.id](http://t.id) === id);  
+if (task) task.completed = true;  
+}
+
+✅ Data flows down via \[task\]  
+✅ Events flow up via (taskCompleted)
+
+🧩 Angular Binding Summary  
+Syntax Type Direction Description  
+\[property\]=“value” Property Binding Parent ➜ Child Sends data to child component  
+(event)=“handler($event)” Event Binding Child ➜ Parent Receives event from child  
+\[(ngModel)\]=“value” Two-way Binding Both Used in Forms (Template-driven)  
+🧰 Useful Commands
+
+Generate components
+===================
+
+ng generate component taskboard  
+ng generate component task-item
+
+Serve application
+=================
+
+ng serve --open
 
 📘 Key Takeaways
-----------------
 
-*   Use **@Input()** and **\[\]** for passing data **downward** (Parent ➜ Child).
-    
-*   Use **@Output()** + **EventEmitter** and **()** for passing data/events **upward** (Child ➜ Parent).
-    
-*   **The Parent** should generally be the **source of data/state** manipulation.
-    
-*   **The Child** should be focused on **display and UI interaction**, using @Output to notify the parent of events.
-    
+Use @Input() for passing data downward.
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML
+Use @Output() + EventEmitter for passing data upward.
+
+\[\] = Property Binding
+
+() = Event Binding
+
+Keep the parent focused on data/state, and the child focused on UI interaction
