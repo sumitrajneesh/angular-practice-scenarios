@@ -1,0 +1,11 @@
+<h2>🧾 Task Board</h2>
+
+<div *ngFor="let task of tasks" [appHighlightTask]="task.priority" class="task-card">
+  <h4>{{ task.title }}</h4>
+  <p>Priority: {{ task.priority }}</p>
+
+  <div *appIfRole="'admin'">
+    <button>Edit</button>
+    <button>Delete</button>
+  </div>
+</div>
