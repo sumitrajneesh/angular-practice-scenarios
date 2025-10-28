@@ -1,0 +1,7 @@
+<h2>Task Board</h2>
+<div *ngFor="let task of tasks">
+  <app-task-item
+    [task]="task"
+    (taskDone)="markAsDone($event)">
+  </app-task-item>
+</div>

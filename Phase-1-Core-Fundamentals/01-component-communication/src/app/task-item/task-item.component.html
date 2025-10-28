@@ -1,0 +1,6 @@
+<div [class.done]="task.done">
+  {{ task.title }}
+  <button (click)="markDone()" [disabled]="task.done">
+    {{ task.done ? 'Completed' : 'Mark Done' }}
+  </button>
+</div>
