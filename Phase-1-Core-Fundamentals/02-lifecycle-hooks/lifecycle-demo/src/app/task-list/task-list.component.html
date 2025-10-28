@@ -1,0 +1,9 @@
+<div class="task-list">
+  <h3>Task List</h3>
+  <button (click)="addTask()">Add Task</button>
+  <button (click)="removeTask()">Remove Task</button>
+
+  <app-task-item *ngFor="let task of tasks" [task]="task">
+  <span style="color:gray;">(projected content example)</span>
+</app-task-item>
+</div>
