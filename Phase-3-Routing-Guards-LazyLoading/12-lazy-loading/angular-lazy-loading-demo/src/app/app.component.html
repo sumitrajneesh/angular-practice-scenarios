@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>{{ title | titlecase }}</h1>
+  <hr>
+
+  <nav>
+    <a routerLink="/">Home</a> |
+    <a routerLink="/admin">Admin</a> |
+    <a routerLink="/user">User</a> |
+    <a routerLink="/dashboard">Dashboard</a>
+  </nav>
+
+  <hr>
+  <router-outlet></router-outlet>
+</div>
