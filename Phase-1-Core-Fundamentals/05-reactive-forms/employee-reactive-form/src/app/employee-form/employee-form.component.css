@@ -1,0 +1,10 @@
+.container {
+  max-width: 700px;
+  margin: auto;
+}
+.card {
+  background-color: #f8f9fa;
+}
+.text-danger {
+  font-size: 13px;
+}
