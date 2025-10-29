@@ -1,0 +1,13 @@
+<div class="container mt-4">
+  <h2 class="text-center text-primary mb-4">Angular 8 HttpClient Interceptor Demo</h2>
+
+  <!-- Loader Spinner (Visible During API Calls) -->
+  <div *ngIf="isLoading | async" class="loader-overlay">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Main Component -->
+  <app-posts></app-posts>
+</div>

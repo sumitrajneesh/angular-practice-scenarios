@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <h3>🔍 Live User Search (RxJS + Observables)</h3>
+  <input
+    type="text"
+    class="form-control mt-3"
+    placeholder="Type to search..."
+    (input)="onSearch($event.target.value)"
+  />
+
+  <ul class="list-group mt-3" *ngIf="users.length > 0">
+    <li class="list-group-item" *ngFor="let user of users">
+      {{ user }}
+    </li>
+  </ul>
+
+  <p *ngIf="users.length === 0" class="text-muted mt-3">No users found.</p>
+</div>

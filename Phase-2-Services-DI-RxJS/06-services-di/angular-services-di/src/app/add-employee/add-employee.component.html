@@ -1,0 +1,7 @@
+<h3>Add New Employee</h3>
+<form (ngSubmit)="addEmployee()">
+  <input type="number" [(ngModel)]="id" name="id" placeholder="ID" required>
+  <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required>
+  <input type="text" [(ngModel)]="role" name="role" placeholder="Role" required>
+  <button type="submit">Add</button>
+</form>
