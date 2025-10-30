@@ -1,0 +1,12 @@
+<div class="container mt-4">
+  <h3>Dynamic Dashboard</h3>
+
+  <div class="btn-group mb-3">
+    <button class="btn btn-primary" (click)="loadWidget('weather')">Weather</button>
+    <button class="btn btn-success" (click)="loadWidget('news')">News</button>
+    <button class="btn btn-warning" (click)="loadWidget('stock')">Stock</button>
+    <button class="btn btn-info" (click)="loadWidget('profile')">Profile</button>
+  </div>
+
+  <ng-template appWidgetHost></ng-template>
+</div>

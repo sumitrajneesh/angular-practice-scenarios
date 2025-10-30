@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2>🔎 Reactive Search with RxJS</h2>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search GitHub users..."
+    (input)="onSearch($event.target.value)"
+  />
+
+  <div *ngIf="loading" class="mt-2 text-info">
+    Loading results...
+  </div>
+
+  <div *ngIf="errorMsg" class="mt-2 text-danger">
+    {{ errorMsg }}
+  </div>
+
+  <ul *ngIf="users.length > 0" class="list-group mt-3">
+    <li *ngFor="let user of users" class="list-group-item d-flex align-items-center">
+      <img [src]="user.avatar_url" width="40" height="40" class="rounded mr-2" />
+      <span>{{ user.login }}</span>
+      <a [href]="user.html_url" target="_blank" class="ml-auto">View Profile</a>
+    </li>
+  </ul>
+</div>

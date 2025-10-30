@@ -1,0 +1,11 @@
+<div class="container mt-4">
+  <h3>User List</h3>
+  <button (click)="loadUsers()" class="btn btn-primary">Load Users</button>
+  <button (click)="triggerError()" class="btn btn-danger ml-2">Trigger Error</button>
+
+  <ul class="list-group mt-3" *ngIf="users.length">
+    <li class="list-group-item" *ngFor="let user of users">
+      {{ user.name }} ({{ user.email }})
+    </li>
+  </ul>
+</div>

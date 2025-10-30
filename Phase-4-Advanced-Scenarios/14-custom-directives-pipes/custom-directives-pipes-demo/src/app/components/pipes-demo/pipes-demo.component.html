@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <h3>📅 Built-in Pipes</h3>
+  <p><strong>Date Pipe:</strong> {{ today | date:'fullDate' }}</p>
+  <p><strong>UpperCase Pipe:</strong> {{ user.name | uppercase }}</p>
+  <p><strong>LowerCase Pipe:</strong> {{ user.role | lowercase }}</p>
+
+  <h3 class="mt-4">🧠 Custom Truncate Pipe</h3>
+  <p>{{ user.bio | truncate:50 }}</p>
+
+  <h3 class="mt-4">🔍 Custom Filter Pipe</h3>
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="searchText"
+    placeholder="Search user by name"
+  />
+
+  <ul class="mt-2">
+    <li *ngFor="let person of users | filter:searchText">
+      {{ person.name }} - {{ person.city }}
+    </li>
+  </ul>
+</div>
